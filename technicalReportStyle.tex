@@ -25,17 +25,23 @@
 \newcommand{\makeCustomTitle}
 {
 \begin{center}
-\LARGE{\textbf{\projectTitle{}}}
+\LARGE{\textbf{\reportTitle{}}}
 \\
 \vspace{5pt}
-\normalsize{\projectStudent{} (\projectStudentNIP{})}
+\normalsize{\reportAuthors{}}
 \\
-\projectDate{}
+\reportDate{}
 \end{center}
 \begin{flushright}
-\footnotesize{Supervised by \projectSupervisor{} 
-\\
-and co-supervised by \projectCoSupervisor{}}
+\footnotesize{
+\begin{tabu}{ccX}
+\toprule
+\emph{Version} & \emph{Date} & \emph{Comments} \\
+\midrule
+\reportVersions{} \\
+\bottomrule
+\end{tabu}
+}
 \end{flushright}
 }
 
@@ -61,7 +67,7 @@ and co-supervised by \projectCoSupervisor{}}
 \fancyhf{}%
 
 \fancyhead[L]{\includegraphics[height=0.45in]{UL_N}}
-\fancyhead[C]{\raisebox{0.2in}{\textsc{Master's Project Proposal}}}
+\fancyhead[C]{\raisebox{0.2in}{\textsc{Technical Report}}}
 \fancyhead[R]{\includegraphics[height=0.45in]{norlab_logo_acronym_dark}}
 \fancyfoot[C]{\thepage/\pageref*{LastPage}}
 
@@ -72,7 +78,7 @@ and co-supervised by \projectCoSupervisor{}}
 % Define the page style for the other pages
 \fancypagestyle{plain}{%
 \fancyhf{}
-\fancyhead[L]{\projectTitle{}}
+\fancyhead[L]{\reportTitle{}}
 \fancyfoot[C]{\thepage/\pageref*{LastPage}}
 \renewcommand{\headrulewidth}{0.1pt}
 \renewcommand{\footrulewidth}{0.1pt}
@@ -90,7 +96,7 @@ and co-supervised by \projectCoSupervisor{}}
 % ---------------------------------------------------------------
 % Author
 
-\author{\projectStudent{} \\
+\author{\reportAuthors{} \\
        Laval University\\
        1065, av. de la Médecine \\
        Quebec, Qc \\
@@ -100,7 +106,7 @@ and co-supervised by \projectCoSupervisor{}}
 % ---------------------------------------------------------------
 % PDF setup
 \hypersetup{%
-    pdftitle={\projectTitle},
+    pdftitle={\reportTitle},
     pdfauthor={\@author},
     pdfkeywords={research, project, robotics, norlab, Northern Robotics Lab, Master's},
     pdfsubject={},

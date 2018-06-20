@@ -5,14 +5,14 @@
 %==============================================================
 % FILL THIS SECTION
 
-\newcommand{\projectTitle}{Use a Descriptive Title}
-\newcommand{\projectStudent}{Your Name}
-\newcommand{\projectStudentNIP}{xxx xxx xxx}
-\newcommand{\projectDate}{\today} % or manually: November 23, 2017
+\newcommand{\reportTitle}{Use a Descriptive Title}
+\newcommand{\reportAuthors}{First Last, Fran\c{c}ois Pomerleau}
+\newcommand{\reportDate}{\today} % or manually: November 23, 2017
 
-\newcommand{\projectSupervisor}{Prof. F. Pomerleau}
-\newcommand{\projectCoSupervisor}{Prof. P. Gigu\`{e}re}
-
+\newcommand{\reportVersions}{
+0.1 & \today & Initial writing %\\
+%1.0 & November 23, 2017 & Final writing
+}
 % Change to your specific bibliography file
 \addbibresource{./latexGoodPractices/exampleReferences.bib}
 %\addbibresource{./references.bib}
@@ -23,12 +23,12 @@
 
 % ---------------------------------------------------------------
 % Load style
-\input{mastersProposalStyle.tex}
+\input{technicalReportStyle.tex}
 % ---------------------------------------------------------------
 
 
-% Customize enumerate list
-\usepackage{enumerate}
+% Add your other packages here
+% make sure to check prembule.tex first!
 
 
 
@@ -38,92 +38,108 @@
 \thispagestyle{titlePage}
 
 % ---------------------------------------------------------------
-\section{Introduction}
-
-\lightlipsum[1-2]
-
-% ---------------------------------------------------------------
-\section{Research Problem}
-
-Whenever you can, avoid to write at the first person (e.g., I, my).
-
+\begin{abstract}
+Describe in 3-4 sentences the goal of this technical report.
 \lightlipsum[1]
-
-\begin{center}
-\emph{
-Don't hesitate to highlight your research question like this.
-}
-\end{center}
-
-\lightlipsum[1]
+\end{abstract}
 
 % ---------------------------------------------------------------
-\section{Related Work}
-Aim for 10 to 15 core articles (i.e., related to the theory you want build on) and 3 to 5 satellite articles (i.e., big picture or motivation for the problematic).
-Here some examples of references \cite{Pomerleau2013,Pomerleau2014}.
+\section{Definitions}
 
-\lightlipsum[1-3]
-
-If you do use a figure, always link your figure in the text (e.g., \autoref{fig:overview}).
-Do not repeat the caption as a shortcut.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[draft, width=0.3\textwidth]{./figs/overview.pdf}
-\caption{
-Replace the file \texttt{./figs/overview.pdf} with a photo or diagram.
-Use a descriptive caption so the reader understand what is going on without searching in the text.
-This is just an example, you don't need to have figures for your Master's project proposal.
-Never use figures from another article that you are not the author.
-Before investing time in a figure, consult your supervisor.
-}
-\label{fig:overview}
-\end{figure}
-
-\lightlipsum[1-2]
-
-% ---------------------------------------------------------------
-\section{Objectives and Methodology}
-\label{sec:objectives}
-
-\emph{Objective one}:
-
-\begin{enumerate}[{1.}1]
-\item First step
-\item Second step
-\item ...
-\end{enumerate}
-
-\emph{Objective two}:
-
-\begin{enumerate}[{2.}1]
-\item First step
-\item Second step
-\item ...
-\end{enumerate}
-
-% ---------------------------------------------------------------
-\section{Schedule}
-
-Always link your table in the text (e.g., \autoref{tab:schedule}).
-
-\lightlipsum[1]
+Use what you need in the symbols and functions defined in \autoref{tab:symbols}, \autoref{tab:pointCloudSymbols}, and \autoref{tab:functions}.
+Stay consistent with the lab's notation and your own symbols.
 
 \begin{table}[htbp]
-  \centering
-  \caption{%
-  Schedule containing the objectives to be accomplished during this project.
-  The numbers refer to the objectives listed in \autoref{sec:objectives}.
-  \textbf{Note:} Change the file \texttt{./schedule.tex} to edit this table.
-  }
-  \input{schedule.tex}
-  \label{tab:schedule}
+\centering
+\caption{General symbol definitions.}
+\label{tab:symbols}
+\begin{tabu}{cX}
+
+\toprule
+\emph{Symbol} & \emph{Explanation} \\
+
+\midrule
+$a$ & A scalar \\
+$\bm{v}$ & A vector of $D$ dimensions, $\bm{v} = [v_1, v_2, \cdots , v_d]^T$ \\
+$\mathcal{S}$ & A set of vectors with $N$ elements in it, $\mathcal{S} = \{\bm{v}_1, \bm{v}_1, \cdots, \bm{v}_n\}$\\
+$\bm{S}$ & Matrix representation of a set $\mathcal{S}$ of size $D \times N$, $\bm{S} = [\bm{v}_1, \bm{v}_1, \cdots, \bm{v}_n]$\\
+$\bm{a} \cdot \bm{b} = c$ & Dot product of two vectors, also known as inner product \\
+$\bm{a}^T \bm{b} = c$ & Inner product of two vectors, also known as dot product \\
+$\mathrm{f}(\cdot)$ & A function, short version of $\mathrm{function}(\cdot)$, same font as $\log$, $\exp$, $\arg\min$\\
+$\|\bm{v}\|_2$ & Euclidian distance or $\ell^2$-distance, $\|\bm{v}\|_2 = \sqrt{\bm{v}^T \bm{v}}$ \\
+
+\bottomrule
+
+\end{tabu}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Symbol definitions for point clouds and registration.}
+\label{tab:pointCloudSymbols}
+\begin{tabu}{cX}
+
+\toprule
+\emph{Symbol} & \emph{Explanation} \\
+\midrule
+
+$d$ & Indices used for the dimension of both the point clouds with $d = \{1,2, \cdots, D\}$ \\
+$i$ & Indices used for a point in the reading (moving) point cloud with $i = \{1,2, \cdots, I\}$\\
+$\bm{p}_i$ & A point in the reading point cloud, $\bm{p} = [x, y, z]^T$ for a 3D point\\
+$\mathcal{P}$ & A set of discrete sample points representing the reading (moving) point cloud,  $\mathcal{P} = \{\bm{p}_1, \bm{p}_1, \cdots, \bm{p}_i\}$ \\
+$\bm{P}$ & Matrix version of $\mathcal{P}$ with a size of $D \times I$ \\
+
+$j, q_j, \mathcal{Q}, \bm{Q}$ & Same definitions but for the reference (static) point cloud \\
+
+$k$ & Indices used when points are matched (points in $\bm{p}$ matched to $\bm{q}$) with $k = \{1,2, \cdots, K\}$\\
+$\bm{e}_k$ & Matched error between two points, $\bm{e}_k = \bm{p}'_i - \bm{q}_j$ \\
+$\mathcal{E}, \bm{E}$ & Set and its matrix version of size $D \times K$ containing all matched error \\
+
+$\bm{x}$ & States of the robot \\
+$\bm{x}_k$ & States of the robot at the same time as the point $\bm{p}_k$ \\
+$\bm{p}'_k$ & Moved reading point cloud as  $\bm{p}'_k = \mathrm{T}(\bm{x}, \bm{p})$ \\
+$\bm{R}$ & Rotation matrix of size $D \times D$ \\
+$\bm{T}$ & Rigid transformation matrix of size $(D+1) \times (D+1)$ \\
+$\bm{n}_{q_k}$ & Normal vector representing a plane at $\bm{p}_k$ \\
+$\bm{W}_{\bm{q}_k}$ & Covariance matrix of size $D \times D$ expressed in the reference frame of $\bm{q}_k$\\
+\bottomrule
+
+\end{tabu}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Function Definitions.}
+\label{tab:functions}
+\begin{tabu}{cX}
+
+\toprule
+\emph{Function} & \emph{Explanation} \\
+\midrule
+
+$\mathrm{T}(\bm{x}, \bm{p})$ & Function transforming moving the reading point cloud \\
+$\mathrm{T}(\bm{x}, \bm{p}_k)$ & Rigid transformation with all points in the reading using the same states\\
+$\mathrm{T}(\bm{x}_k, \bm{p}_k)$ & Flexible transformation with each point moved by their own states\\
+$\mathrm{R}(\bm{x})$ & Function building a rotation matrix from the states \\
+$\mathrm{J}(\bm{x}) = a$ & Objective function also known as error function, loss function, cost function\\
+$\mathrm{match}(\mathcal{P}, \mathcal{Q}) = \mathcal{E}$ & Matching function generating a set of error vectors $\mathcal{E}$ with $K$ elements in it\\
+
+\bottomrule
+
+\end{tabu}
 \end{table}
 
 % ---------------------------------------------------------------
-\section{Conclusion}
+\newpage
+\section{Your Technical Content 1}%
+Here some examples of references \cite{Pomerleau2013,Pomerleau2014}.
+\lightlipsum[1-2]
 
-\lightlipsum[1]
+% ---------------------------------------------------------------
+\newpage
+\section{Your Technical Content 2}%
+\lightlipsum[1-2]
 
 % ---------------------------------------------------------------
 \printbibliography
