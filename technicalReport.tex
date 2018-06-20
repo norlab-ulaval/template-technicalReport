@@ -1,0 +1,132 @@
+\documentclass[10pt,letterpaper,oneside]{article}
+
+\input{./latexGoodPractices/preamble}
+
+%==============================================================
+% FILL THIS SECTION
+
+\newcommand{\projectTitle}{Use a Descriptive Title}
+\newcommand{\projectStudent}{Your Name}
+\newcommand{\projectStudentNIP}{xxx xxx xxx}
+\newcommand{\projectDate}{\today} % or manually: November 23, 2017
+
+\newcommand{\projectSupervisor}{Prof. F. Pomerleau}
+\newcommand{\projectCoSupervisor}{Prof. P. Gigu\`{e}re}
+
+% Change to your specific bibliography file
+\addbibresource{./latexGoodPractices/exampleReferences.bib}
+%\addbibresource{./references.bib}
+%==============================================================
+
+
+
+
+% ---------------------------------------------------------------
+% Load style
+\input{mastersProposalStyle.tex}
+% ---------------------------------------------------------------
+
+
+% Customize enumerate list
+\usepackage{enumerate}
+
+
+
+%================================================================
+\begin{document}
+\makeCustomTitle
+\thispagestyle{titlePage}
+
+% ---------------------------------------------------------------
+\section{Introduction}
+
+\lightlipsum[1-2]
+
+% ---------------------------------------------------------------
+\section{Research Problem}
+
+Whenever you can, avoid to write at the first person (e.g., I, my).
+
+\lightlipsum[1]
+
+\begin{center}
+\emph{
+Don't hesitate to highlight your research question like this.
+}
+\end{center}
+
+\lightlipsum[1]
+
+% ---------------------------------------------------------------
+\section{Related Work}
+Aim for 10 to 15 core articles (i.e., related to the theory you want build on) and 3 to 5 satellite articles (i.e., big picture or motivation for the problematic).
+Here some examples of references \cite{Pomerleau2013,Pomerleau2014}.
+
+\lightlipsum[1-3]
+
+If you do use a figure, always link your figure in the text (e.g., \autoref{fig:overview}).
+Do not repeat the caption as a shortcut.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[draft, width=0.3\textwidth]{./figs/overview.pdf}
+\caption{
+Replace the file \texttt{./figs/overview.pdf} with a photo or diagram.
+Use a descriptive caption so the reader understand what is going on without searching in the text.
+This is just an example, you don't need to have figures for your Master's project proposal.
+Never use figures from another article that you are not the author.
+Before investing time in a figure, consult your supervisor.
+}
+\label{fig:overview}
+\end{figure}
+
+\lightlipsum[1-2]
+
+% ---------------------------------------------------------------
+\section{Objectives and Methodology}
+\label{sec:objectives}
+
+\emph{Objective one}:
+
+\begin{enumerate}[{1.}1]
+\item First step
+\item Second step
+\item ...
+\end{enumerate}
+
+\emph{Objective two}:
+
+\begin{enumerate}[{2.}1]
+\item First step
+\item Second step
+\item ...
+\end{enumerate}
+
+% ---------------------------------------------------------------
+\section{Schedule}
+
+Always link your table in the text (e.g., \autoref{tab:schedule}).
+
+\lightlipsum[1]
+
+\begin{table}[htbp]
+  \centering
+  \caption{%
+  Schedule containing the objectives to be accomplished during this project.
+  The numbers refer to the objectives listed in \autoref{sec:objectives}.
+  \textbf{Note:} Change the file \texttt{./schedule.tex} to edit this table.
+  }
+  \input{schedule.tex}
+  \label{tab:schedule}
+\end{table}
+
+% ---------------------------------------------------------------
+\section{Conclusion}
+
+\lightlipsum[1]
+
+% ---------------------------------------------------------------
+\printbibliography
+
+
+\end{document}
