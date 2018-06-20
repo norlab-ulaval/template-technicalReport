@@ -1,4 +1,4 @@
-# template-technicalReport
+# Latex Template for technical reports
 Latex template for technical reports.
 This is mainly for mathematical explaination that do not fit in an article.
 
