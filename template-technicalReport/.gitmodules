@@ -1,0 +1,3 @@
+[submodule "latexGoodPractices"]
+	path = latexGoodPractices
+	url = https://github.com/norlab-ulaval/latexGoodPractices.git
